@@ -1,0 +1,96 @@
+PROJECT: TEXT ADVENTURE GAME
+SOURCE CODE:
+import java.util.Scanner;
+
+public class TextAdventureGame {
+
+    public static void main(String[] args) {
+        startGame();
+    }
+
+    public static void startGame() {
+        System.out.println("Welcome to the Text Adventure Game!");
+        System.out.println("You find yourself in a mysterious place...");
+
+        // Start your story
+        int outcome = introduction();
+
+        // Display different outcomes based on user choices
+        displayOutcome(outcome);
+
+        // Optionally, ask the user if they want to play again
+        playAgain();
+    }
+
+    public static int introduction() {
+        // Display the introduction and initial choices
+        System.out.println("You encounter a fork in the path. Do you want to go left or right?");
+        System.out.print("Enter your choice (left/right): ");
+
+        // Get user input
+        Scanner scanner = new Scanner(System.in);
+        String userChoice = scanner.nextLine().toLowerCase();
+
+        // Process user input and determine outcome
+        switch (userChoice) {
+            case "left":
+                System.out.println("You chose to go left.");
+                return 1; // You can define different outcomes based on user choices
+            case "right":
+                System.out.println("You chose to go right.");
+                return 2; // Another possible outcome
+            default:
+                System.out.println("Invalid choice. Please enter 'left' or 'right'.");
+                return introduction(); // Recursively call the method until a valid choice is made
+        }
+    }
+
+    public static void displayOutcome(int outcome) {
+        // Display outcomes based on the user's choices
+        switch (outcome) {
+            case 1:
+                System.out.println("You discover a hidden treasure!");
+                break;
+            case 2:
+                System.out.println("You encounter a fierce dragon and get burned!");
+                break;
+            // Add more cases for additional outcomes
+        }
+    }
+
+    public static void playAgain() {
+        // Ask the user if they want to play again
+        System.out.print("Do you want to play again? (yes/no): ");
+        Scanner scanner = new Scanner(System.in);
+        String playAgainChoice = scanner.nextLine().toLowerCase();
+
+        if (playAgainChoice.equals("yes")) {
+            startGame(); // Restart the game
+        } else {
+            System.out.println("Thanks for playing! Goodbye.");
+        }
+    }
+}
+OUTPUT:
+Welcome to the Text Adventure Game!
+You find yourself in a mysterious place...
+You encounter a fork in the path. Do you want to go left or right?
+Enter your choice (left/right): left
+You chose to go left.
+You discover a hidden treasure!
+Do you want to play again? (yes/no): yes
+Welcome to the Text Adventure Game!
+You find yourself in a mysterious place...
+You encounter a fork in the path. Do you want to go left or right?
+Enter your choice (left/right): right
+You chose to go right.
+You encounter a fierce dragon and get burned!
+Do you want to play again? (yes/no): yes
+Welcome to the Text Adventure Game!
+You find yourself in a mysterious place...
+You encounter a fork in the path. Do you want to go left or right?
+Enter your choice (left/right): left
+You chose to go left.
+You discover a hidden treasure!
+Do you want to play again? (yes/no):  no
+Thanks for playing! Goodbye.
